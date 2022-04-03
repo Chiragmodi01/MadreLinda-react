@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@100;200;300;400;500;600&display=swap');
+
+.App {
+  font-family: 'Quicksand', sans-serif;
+}
+a , button {
+  cursor: pointer;
+}
+.shortApp {
+  height: 100vh;
+  overflow: hidden;
+}
+.card-img {
+  width: 290px;
+  height: 290px;
+  object-fit: cover;
+}
+.card-img-landing {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+@media only screen and (max-width: 1300px) {
+.App{
+  display: none;
+}
+}
