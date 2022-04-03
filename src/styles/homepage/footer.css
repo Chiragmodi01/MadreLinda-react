@@ -1,0 +1,139 @@
+/* footer */
+.footer-features-container {
+    display: flex;
+    flex-direction: row;
+}
+.footer-features_feature {
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-basis: 100%;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    transition: all 0.5s;
+    color: white;
+}
+.footer-features_feature.feature-1 {
+    background-color: black;
+}
+.footer-features_feature.feature-2 {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+.footer-features_feature.feature-3 {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.footer-features_feature:hover {
+    flex-basis: 140%;
+    transition: 0.5s ease-in;
+}
+.footer-features_feature-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.footer-features-title-text {
+    font-size: 2rem;
+}
+
+/* footer-main */
+.footer-main {
+    background-color: #f3f3f3;
+}
+.footer-main_top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 5rem;
+    padding-top: 2.5rem;
+    color: black;
+}
+.footer-main_pills-section {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+.footer-main_contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.footer-main_contact-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.footer-main_pill-title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.footer-main_mid-cards-wrapper {
+    padding: 2.5rem 0 1.5rem 0;
+    color: white;
+}
+.footer-main_bottom {
+    border-top: 1px solid black;
+    padding: .7rem 0 1.5rem 0;
+    margin: 0 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-main_bottom_socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.footer-main_bottom_socials:nth-child(1n) {
+    color: black;
+}
+.footer-main_bottom_socials:nth-child(1n) :hover {
+    color: white;
+    cursor: pointer;
+}
+.subscribe-input {
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+}
+.subscribe-input-btn {
+    padding: 6px 8px;
+    background-color: black;
+    border-radius: 3px;
+    color: #e9e9e9;
+}
+.subscribe-input-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.footer-main_brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+.footer-main_bottom_text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.auther-name_footer {
+    color: black;
+    font-style: oblique;
+    display: inline-flex;
+}
+.auther-name_footer:hover {
+    color: palevioletred;
+    display: inline-flex;
+    text-decoration: underline;
+}
