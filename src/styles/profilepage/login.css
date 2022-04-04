@@ -1,0 +1,168 @@
+.loginAsideHidden {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.loginAside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.loginpage_blur {
+    width: 100%;
+    height: 100%;
+    filter: opacity(0.7);
+    background-color: #e9e9e9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.loginPage-container {
+    width: 25rem;
+    background-color: #f9f9f9;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    box-shadow: -5px 0px 20px 0 rgb(0 0 0 / 40%);
+}
+
+.loginPage_top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    height: auto;
+}
+.loginPage_header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.2rem;
+    text-align: start;
+    margin-bottom: 1rem;
+}
+.loginPage_header_title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 2rem;
+}
+.loginPage_form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-direction: column;
+    width: 100%;
+}
+.loginPage_form_input {
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+.loginPage_form_checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+.loginPage_form_checkbox{
+    outline: 2px solid black;
+    width: 1.1rem;
+    background: transparent;
+    height: 1.1rem;
+    border-radius: 0px;
+    accent-color: black;
+    padding: 2px;
+    appearance: none;
+    flex-shrink: 0;
+}
+.loginPage_form_checkbox:checked {
+    background: black;
+}
+.loginPage_from_submit {
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    outline: none;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+.loginPage_from_submit:hover {
+    color: black;
+    background-color: transparent;
+    transition: all 0.2s;
+}
+.loginPage_from_action-forgot-pass {
+    font-size: 1rem;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid black;
+    color: black;
+    margin: 0 auto;
+}
+.loginPage_bottom {
+    padding: 2rem 1.5rem;
+    background-color: #e9e9e9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.2rem;
+}
+.loginPage_bottom_header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.2rem;
+    text-align: start;
+}
+.loginPage_bottom_header_title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.loginPage_bottom_header_desc {
+    text-align: start;
+}
+.loginPage_bottom_action {
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+.loginPage_bottom_action:hover {
+    background-color: black;
+    color: #e9e9e9;
+    transition: all .2s;
+}

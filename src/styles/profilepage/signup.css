@@ -1,0 +1,171 @@
+/* Signup page */
+.signupPage-container {
+    padding: 4rem;
+    display: grid;
+    grid-auto-flow: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 5rem;
+    column-gap: 7rem;
+}
+.signupPage-header-wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.signupPage_action-login {
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+.logout-toast {
+    display: none;
+    background-color: #e9e9e9;
+    padding: 1.3rem 1rem;
+    width: 25rem;
+    font-weight: bold;
+    position: absolute;
+    right: 1%;
+    top: 5%
+}
+.logout-toast .fa-times:hover {
+    color : white;
+    cursor: pointer;
+}
+.signupPage_header {
+    grid-column: 1 / -1;
+    grid-row: 1 / span 1;
+    text-align: left;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.signupPage_left {
+    grid-column: 1 / span 1;
+    grid-row: 2 /  -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3rem;
+    text-align: left;
+    padding: 0 2rem;
+}
+.signupPage_left_login-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+.signupPage_left_personal-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+.personal-info_input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+.signupPage_left_login-info_valid-pass-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.signupPage_left_login-info_title-wrapper, .signupPage_left_personal-info_title-wrapper, .signupPage_right_billing-info_title-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+}
+.personal-info_input-wrapper.dob {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.signupPage_personal-info_input#month {
+    width: 60%;
+}
+.signupPage_personal-info_input#date {
+    width: 20%;
+}
+.signupPage_personal-info_input#year {
+    width: 20%;
+}
+.personal-info_input-wrapper.first-name {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.signupPage_personal-info_input#title {
+    width: 20%;
+}
+.signupPage_personal-info_input#first-name {
+    width: 80%;
+}
+.signupPage-container input:not([type='checkbox']){
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    outline: none;
+    border: 1px solid black;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+.signupPage_right {
+    grid-column: 2 / span 1;
+    grid-row: 2 /  -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    text-align: left;
+    padding: 0 2rem;
+}
+.billing-info_input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.3rem;
+    width: 100%;
+}
+.signupPage_right_billing-info_terms-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.signupPage_action-create-ac {
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    outline: none;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.billing-info_terms-checkbox:checked {
+    background: black;
+}
+
+.billing-info_terms-checkbox {
+    outline: 2px solid black;
+    width: 1.1rem;
+    background: transparent;
+    height: 1.1rem;
+    border-radius: 0px;
+    accent-color: black;
+    padding: 2px;
+    appearance: none;
+    flex-shrink: 0;
+}
