@@ -100,22 +100,22 @@ function Filters() {
                 <div className={showFilterState.material ? "eachFilter_wrapper FilterMaterial" : " eachFilter_wrapper FilterMaterial no-display"}>
                     <div className="filters_eachFilter filter-material">
                         <label htmlFor="material-1">
-                            <input type="checkbox" id="filter-material material-1" checked={toggleFilterState.category['Flannel']}
+                            <input type="checkbox" id="material-1" checked={toggleFilterState.material['Flannel']}
                                 onChange={() => toggleFilterDispatch({type: 'CHECK_MATERIAL_FLANNEL'})}/>
                             Flannel (19)
                         </label>
                         <label htmlFor="material-2">
-                            <input type="checkbox" id="filter-material material-2" checked={toggleFilterState.category['Cotton']}
+                            <input type="checkbox" id="material-2" checked={toggleFilterState.material['Cotton']}
                                 onChange={() => toggleFilterDispatch({type: 'CHECK_MATERIAL_COTTON'})}/>
                             Cotton (10)
                         </label>
                         <label htmlFor="material-3">
-                            <input type="checkbox" id="filter-material material-3" checked={toggleFilterState.category['Elastane']}
+                            <input type="checkbox" id="material-3" checked={toggleFilterState.material['Elastane']}
                                 onChange={() => toggleFilterDispatch({type: 'CHECK_MATERIAL_ELASTANE'})}/>
                             Elastane (6)
                         </label>
-                        <label htmlFor="material-3">
-                            <input type="checkbox" id="filter-material material-3" checked={toggleFilterState.category['Linen']}
+                        <label htmlFor="material-4">
+                            <input type="checkbox" id="material-4" checked={toggleFilterState.material['Linen']}
                                 onChange={() => toggleFilterDispatch({type: 'CHECK_MATERIAL_LINEN'})}/>
                             Linen (6)
                         </label>
