@@ -1,0 +1,10 @@
+.hr-card {
+    display: flex;
+    flex-direction: row;
+}
+.card-qty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+}
