@@ -53,7 +53,9 @@ const productReducer = (state, action) => {
                 wishlistItems: isInBag(state.wishlistItems, false, action.payload.product),
                 cartItems: removeCurrent(state.cartItems, action.payload.product),
                 initialPrice: state.initialPrice - (action.payload.product.price * action.payload.product.qty),
-                totalPrice: state.totalPrice - action.payload.charges - (action.payload.product.price * action.payload.product.qty)
+                totalPrice: state.totalPrice - action.payload.charges - (action.payload.product.price * action.payload.product.qty),
+                isVoucherApplied: false,
+                isVoucherDisabled: false
             }
         } else  {
             return {
@@ -62,7 +64,9 @@ const productReducer = (state, action) => {
                 wishlistItems: isInBag(state.wishlistItems, true, action.payload.product),
                 cartItems: [ ...state.cartItems, {...action.payload.product}],
                 initialPrice: state.initialPrice + (action.payload.product.price * action.payload.product.qty),
-                totalPrice: state.totalPrice + action.payload.charges + (action.payload.product.price * action.payload.product.qty)
+                totalPrice: state.totalPrice + action.payload.charges + (action.payload.product.price * action.payload.product.qty),
+                isVoucherApplied: false,
+                isVoucherDisabled: false
             }
         }
 
@@ -95,6 +99,15 @@ const productReducer = (state, action) => {
             ...state,
             isLoggedIn: action.payload
         }
+
+        case 'APPLY_VOUCHER':
+            return {
+                ...state,
+                voucherPrice: action.payload,
+                totalPrice: state.totalPrice - state.voucherPrice,
+                isVoucherApplied: true,
+                isVoucherDisabled: true
+            }
 
         default:
             return state;

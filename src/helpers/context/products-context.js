@@ -31,6 +31,9 @@ function ProductsProvider({ children }) {
         inBag: false,
         initialPrice: 0,
         totalPrice: 0,
+        isVoucherApplied: false,
+        isVoucherDisabled: false,
+        voucherPrice: 0,
         showLogin: false,
         isLoggedIn: false
     })    

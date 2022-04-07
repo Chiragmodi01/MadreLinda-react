@@ -73,6 +73,10 @@
     padding: .5rem 1rem;
     background-color: transparent;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 .price-details-action-place {
     border: 1px solid black;

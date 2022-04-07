@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useProducts } from '../helpers/context/products-context';
 import { RiShareBoxFill } from 'react-icons/ri';
@@ -9,9 +9,22 @@ import EachCardCart from '../comps/EachCardCart';
 
 function CartPage() {
 
-  const { state } = useProducts();
+  const voucherCode = ["NEOG22", "CHIRAG50", "FULLBONUSMARKS50"];
+  
+  const [voucher, setVoucher] = useState('');
+
+  const { state, dispatch } = useProducts();
 
   let navigate = useNavigate();
+
+  const applyVoucher = (e) => {
+    { state.isVoucherApplied ? alert('One voucher already used!') : voucherCode.some((code) => code === voucher) ? dispatch({ type: 'APPLY_VOUCHER', payload: 50}) : alert('Incorrect Voucher code')}
+  }
+
+  const disableVoucher = () => {
+    console.log('disable vc triggered!'),
+    {...state, isVoucherDisabled: true};
+  }
 
   return (
     <div>
@@ -37,8 +50,10 @@ function CartPage() {
         </main>
         <div className="cartPage_price-details">
           <div className="cartPage_apply-voucher-wrapper">
-            <input type="text" className="cartPage_apply-voucher-input" placeholder="14 digit voucher code" />
-            <button className="cartPage_apply-voucher-action btn-hover">Apply</button>
+            <input type="text" className="cartPage_apply-voucher-input" placeholder="14 digit voucher code"
+            disabled={(state.cartItems.length === 0 ? disableVoucher() : false) || state.isVoucherDisabled }
+            value={voucher} onChange={(e) => setVoucher(e.target.value)}/>
+            <button className="cartPage_apply-voucher-action btn-hover" onClick={applyVoucher}>{state.isVoucherApplied ? "Applied!" : "Apply"}</button>
           </div>
           <div className="cartPage_price-details-wrapper">
               <h5 className="price_details-title">Price Details ({state.cartItems.length} item)</h5>
@@ -54,7 +69,7 @@ function CartPage() {
               </div>
               <div className="price-details_info-each">
                   <p className="price-details_info-title">Voucher Discount</p>
-                  <p className="price-details_info-digit">- $0</p>
+                  <p className="price-details_info-digit">- ${state.voucherPrice}</p>
               </div>
               <div className="price-details_info-each">
                   <p className="price-details_info-title">Delivery Charges</p>
