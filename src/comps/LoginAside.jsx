@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import { useProducts } from '../helpers/context/products-context';
 import '../styles/profilepage/login.css';
 import '../styles/utils/utils.css';
@@ -7,6 +8,28 @@ import { IoClose } from 'react-icons/io5';
 function LoginAside( ) {
 
     const { state, dispatch } = useProducts();
+
+    const [userDataLogin, setUserDataLogin] = useState({
+        "email": "",
+        "password": ""
+      })
+
+    
+      const loginSubmitHandler = async(e) => {
+          e.preventDefault();
+        try {
+            const res = await axios.post("/api/auth/login", userDataLogin);
+            localStorage.setItem("token", res.data.encodedToken);
+            dispatch({type: "USER_LOGIN", payload: true})
+          } catch(e) {
+            console.log(e.message);
+          }
+      }
+
+      const fillGuestUser = () => {
+        setUserDataLogin({ email: "brownboychris@gmail.com",
+        password: "chrisbrown"})
+      }
     
   return (
     <div className={ state.showLogin ? 'loginAside' : 'loginAsideHidden'} >
@@ -21,14 +44,16 @@ function LoginAside( ) {
                     <p className="loginPage_header_desc">If you are a registered user, please enter your email and password.</p>
                 </div>
                 <form action="/" className="loginPage_form">
-                    <input placeholder="Email" type="text" name="/" className="loginPage_form_input input-email" />
-                    <input placeholder="Password" type="text" name="/" className="loginPage_form_input input-pass" />
+                    <input placeholder="Email" type="email" name="/" className="loginPage_form_input input-email" 
+                    value={userDataLogin.email} onChange={(e) => setUserDataLogin({...userDataLogin, email: e.target.value})}/>
+                    <input placeholder="Password" type="password" name="/" className="loginPage_form_input input-pass" 
+                    value={userDataLogin.password} onChange={(e) => setUserDataLogin({...userDataLogin, password: e.target.value})}/>
                     <div className="loginPage_form_checkbox-wrapper">
                         <input type="checkbox" name="/" id="remember-me" className="loginPage_form_checkbox" />
                         <label for="remember-me" className="loginPage_form_checkbox-label">Remember me</label>
                     </div>
-                    <button type="submit" className="loginPage_from_submit cursor-pointer">Login</button>
-                    <a href="/" className="loginPage_from_action-forgot-pass">Forgot my password</a>
+                    <button type="submit" className="loginPage_from_submit cursor-pointer" onClick={(e) => loginSubmitHandler(e)}>Login</button>
+                    <button className="loginPage_from_action-forgot-pass" onClick={(e) => fillGuestUser(e)}>Guest Login</button>
                 </form>
             </div>
         

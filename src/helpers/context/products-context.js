@@ -31,7 +31,8 @@ function ProductsProvider({ children }) {
         inBag: false,
         initialPrice: 0,
         totalPrice: 0,
-        showLogin: false
+        showLogin: false,
+        isLoggedIn: false
     })    
 
     const [toggleFilterState, toggleFilterDispatch] = useReducer(toggleFilterReducer, {

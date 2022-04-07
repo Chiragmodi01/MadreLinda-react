@@ -1,10 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 import '../styles/profilepage/signup.css';
 import LoginAside from '../comps/LoginAside';
 import { useProducts } from '../helpers/context/products-context';
+import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
-  const { state, dispatch } = useProducts();
+  const getLocalToken = localStorage.getItem("token");
+
+
+  let navigate = useNavigate()
+
+  const { state, dispatch, isLoggedIn } = useProducts();
+
+  const [userData, setUserData] = useState({
+    "email":"",
+    "password":"",
+    "name": "chris",
+    "lastname": "white"
+  })
+  
+
+  const signupSubmitHandler = async() => {
+    if(!getLocalToken) {
+      try {
+        const res = await axios.post("/api/auth/signup", userData);
+        localStorage.setItem("token", res.data.encodedToken);
+        dispatch({type: "USER_LOGIN", payload: true})
+      } catch(e) {
+        console.log(e.message);
+      }
+    }
+    navigate("/products")
+
+  }
+
+  const logOutUser = () => {
+    localStorage.clear();
+    dispatch({type: "USER_LOGIN", payload: false})
+  }
+
+  console.log(state.isLoggedIn);
+
 
   return (
     <>
@@ -15,7 +52,9 @@ function ProfilePage() {
         <div className="signupPage-header-wrapper">
           <h3 className="signupPage_header">Create an account</h3>
           <div className="flex-centered gap-8">
-            <h3 className="signupPage_action-login cursor-pointer" onClick={() => dispatch({type: 'SHOW_LOGIN', payload: true})}> Log In</h3>
+            <h3 className="signupPage_action-login cursor-pointer" onClick={() => {!getLocalToken ? dispatch({type: 'SHOW_LOGIN', payload: true}) : logOutUser()}}>
+              {state.isLoggedIn ? "Log Out" : "Log In"}
+            </h3>
           </div>
         </div>
 
@@ -26,10 +65,12 @@ function ProfilePage() {
               <p className="signupPage_left_login-info_title-required">* Required information</p>
             </div>
             <div className="login-info_input-wrapper">
-              <input placeholder="Email" type="text" name="/" className="signupPage_left_login-info_input email" />
+              <input placeholder="Email" type="email" name="/" className="signupPage_left_login-info_input email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})} />
             </div>
             <div className="login-info_input-wrapper">
-              <input placeholder="Password" type="text" name="/" className="signupPage_left_login-info_input pass" />
+              <input placeholder="Password" type="password" name="/" className="signupPage_left_login-info_input pass" 
+              value={userData.password}
+              onChange={(e) => setUserData({...userData, password: e.target.value})}/>
             </div>
             <div className="signupPage_left_login-info_valid-pass-wrapper">
               <p className="login-info_valid-pass_left">Minimum 8 characters</p>
@@ -81,7 +122,7 @@ function ProfilePage() {
                 By creating an account, you agree to accept the General Terms and Conditions of UseNew tab and that your data will be processed in compliance with the Privacy PolicyNew tab of Hermès.
               </p>
             </div>
-            <button type="submit" className="signupPage_action-create-ac btn-hover-rv cursor-pointer">Create an account</button>
+            <button type="submit" className="signupPage_action-create-ac btn-hover-rv cursor-pointer" onClick={signupSubmitHandler}>Create an account</button>
         </section>
         
       </main>

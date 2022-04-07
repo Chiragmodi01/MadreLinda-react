@@ -90,6 +90,12 @@ const productReducer = (state, action) => {
                 showLogin: action.payload
             }
 
+        case 'USER_LOGIN' : 
+           return {
+            ...state,
+            isLoggedIn: action.payload
+        }
+
         default:
             return state;
     }
