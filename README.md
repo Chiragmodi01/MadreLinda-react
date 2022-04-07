@@ -1,6 +1,6 @@
 ## <img src="/public/assets/favicon.png" width="25" height="25" /> [Madré Linda](https://madrelinda.netlify.app/)
 
-Madré Linda fahion house, Online Store.
+Madré Linda fashion house, Online Store.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b3a32c1a-b15d-4f15-8412-9df56267bfec/deploy-status)](https://app.netlify.com/sites/madrelinda/deploys)
 
