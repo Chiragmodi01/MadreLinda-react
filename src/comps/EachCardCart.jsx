@@ -1,9 +1,8 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import '../styles/utils/utils.css'
 import '../styles/card/verticalCard.css'
 import '../styles/card/horizontalCard.css'
 import { FiHeart } from 'react-icons/fi';
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useProducts } from '../helpers/context/products-context';
@@ -27,8 +26,6 @@ function EachCard({ product }) {
             <FiHeart size="1.5rem" className={product.fillHeart ? "heart-filled cursor-pointer" : "each-card_img-overlay icon-heart cursor-pointer"} 
             onClick={() => dispatch({ type: 'ADD_TO_WISHLIST', payload: {product: product}})}
             />
-            <IoIosArrowBack size="1.5rem" className="each-card_img-overlay icon-arrow arrow-left"/>
-            <IoIosArrowForward size="1.5rem" className="each-card_img-overlay icon-arrow arrow-right"/>
         </div>
         <div className="each-card-section-bottom">
             <p className="card-desc">{product.title}</p>
