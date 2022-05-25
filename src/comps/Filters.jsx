@@ -1,7 +1,7 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import '../styles/productspage/filters.css'
 import '../styles/utils/utils.css'
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowDown } from '../utils/getIcons';
 import { ShowFilterReducer } from '../helpers/reducer/ShowFilterReducer';
 import { useProducts} from '../helpers/context/products-context';
 

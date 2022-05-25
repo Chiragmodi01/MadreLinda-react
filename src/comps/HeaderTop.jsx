@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/homepage/header.css'
-import { IoLocationOutline } from 'react-icons/io5';
+import { IoLocationOutline } from '../utils/getIcons';
 
 function HeaderTop() {
   return (

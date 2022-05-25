@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useProducts } from '../helpers/context/products-context';
 import '../styles/profilepage/login.css';
 import '../styles/utils/utils.css';
-import { IoClose } from 'react-icons/io5';
+import { IoClose } from '../utils/getIcons';
 
 function LoginAside( ) {
 

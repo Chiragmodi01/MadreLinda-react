@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import '../styles/utils/utils.css'
 import '../styles/card/verticalCard.css'
-import { FiHeart } from 'react-icons/fi';
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import { BsStarFill, BsStar } from 'react-icons/bs';
+import { FiHeart, IoIosArrowForward, IoIosArrowBack, BsStarFill, BsStar } from '../utils/getIcons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useProducts } from '../helpers/context/products-context';
 

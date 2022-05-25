@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import '../styles/utils/utils.css'
 import '../styles/card/verticalCard.css'
 import '../styles/card/horizontalCard.css'
-import { FiHeart } from 'react-icons/fi';
-import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
+import { FiHeart, AiOutlinePlusSquare, AiOutlineMinusSquare } from '../utils/getIcons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useProducts } from '../helpers/context/products-context';
 

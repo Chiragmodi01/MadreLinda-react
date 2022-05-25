@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/homepage/footer.css'
-import { IoIosArrowForward } from 'react-icons/io';
-import { FaFacebookF, FaTwitter, FaPinterest, FaInstagram, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
+import { IoIosArrowForward, FaFacebookF, FaTwitter, FaPinterest, FaInstagram, FaYoutube, FaLinkedinIn } from '../utils/getIcons';
 
 function Footer() {
   return (

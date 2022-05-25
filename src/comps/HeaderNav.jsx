@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/homepage/header.css'
-import { IoSearchOutline } from 'react-icons/io5';
-import { BiUser } from 'react-icons/bi';
-import { FiHeart } from 'react-icons/fi';
-import { BsBag } from 'react-icons/bs';
-import { IoClose } from 'react-icons/io5';
+import { IoSearchOutline, IoClose, BsBag, FiHeart, BiUser } from 'react-icons/io5';
 import { Link } from "react-router-dom";
 import { useProducts } from '../helpers/context/products-context';
 import { useNavigate } from "react-router-dom";

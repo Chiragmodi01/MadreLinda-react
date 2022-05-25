@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/homepage/homepage.css';
 import { useNavigate } from "react-router-dom";
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowForward, IoIosArrowBack } from '../utils/getIcons';
 import EachCardLanding from '../comps/EachCardLanding';
 import { useProducts } from '../helpers/context/products-context';
 import { img1big, img2big, img3big, img4big, img5big, img6landing, img7landing, img8landing, img9landing, img10landing, img1landing, heroVideo, heroVideoPoster } from "../assets/images/productImages";
