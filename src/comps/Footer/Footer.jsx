@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/homepage/footer.css'
-import { IoIosArrowForward, FaFacebookF, FaTwitter, FaPinterest, FaInstagram, FaYoutube, FaLinkedinIn } from '../utils/getIcons';
+import './footer.css'
+import { IoIosArrowForward, FaFacebookF, FaTwitter, FaPinterest, FaInstagram, FaYoutube, FaLinkedinIn } from '../../utils/getIcons';
 
 function Footer() {
   return (
@@ -83,4 +83,4 @@ function Footer() {
   )
 }
 
-export default Footer
+export {Footer}

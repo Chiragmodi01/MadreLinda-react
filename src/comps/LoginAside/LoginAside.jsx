@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useProducts } from '../helpers/context/products-context';
-import '../styles/profilepage/login.css';
-import '../styles/utils/utils.css';
-import { IoClose } from '../utils/getIcons';
+import { useProducts } from '../../helpers/context/products-context';
+import './login.css';
+import { IoClose } from '../../utils/getIcons';
 
 function LoginAside( ) {
 
@@ -69,4 +68,4 @@ function LoginAside( ) {
   )
 }
 
-export default LoginAside
+export {LoginAside}

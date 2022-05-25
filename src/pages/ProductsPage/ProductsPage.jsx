@@ -1,11 +1,11 @@
 import React from 'react'
-import '../styles/productspage/products.css';
-import InfinityLoader from "../assets/gifs/Infinity-loader.svg";
+import './products.css';
+import InfinityLoader from "../../assets/gifs/Infinity-loader.svg";
 import 'react-lazy-load-image-component/src/effects/opacity.css';
-import EachCard from '../comps/EachCard';
-import { useProducts } from '../helpers/context/products-context';
-import Filters from '../comps/Filters';
-import { filterByCategory, filterByMaterial, filterByRating, filterByPrice, sortByPrice, filterByGender } from '../utils/filterUtils';
+import {EachCard} from '../../comps';
+import {Filters} from '../../comps';
+import { filterByCategory, filterByMaterial, filterByRating, filterByPrice, sortByPrice, filterByGender } from '../../utils/filterUtils';
+import { useProducts } from '../../helpers/context/products-context';
 
 function ProductsPage( ) {
 
@@ -54,4 +54,4 @@ function ProductsPage( ) {
   )
 }
 
-export default ProductsPage
+export {ProductsPage}

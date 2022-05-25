@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import '../styles/utils/utils.css'
-import '../styles/card/verticalCard.css'
-import { FiHeart, IoIosArrowForward, IoIosArrowBack, BsStarFill, BsStar } from '../utils/getIcons';
+import '../../styles/card/verticalCard.css'
+import { FiHeart, BsStarFill, BsStar } from '../../utils/getIcons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useProducts } from '../helpers/context/products-context';
+import { useProducts } from '../../helpers/context/products-context';
 
 function EachCard({ product }) {
 
@@ -27,8 +26,6 @@ function EachCard({ product }) {
             <FiHeart size="1.5rem" className={product.fillHeart ? "heart-filled cursor-pointer" : "each-card_img-overlay icon-heart cursor-pointer"} 
             onClick={() => dispatch({ type: 'ADD_TO_WISHLIST', payload: {product: product}})}
             />
-            <IoIosArrowBack size="1.5rem" className="each-card_img-overlay icon-arrow arrow-left"/>
-            <IoIosArrowForward size="1.5rem" className="each-card_img-overlay icon-arrow arrow-right"/>
         </div>
         <div className="each-card-section-bottom">
             <p className="card-desc">{product.title}</p>
@@ -48,4 +45,4 @@ function EachCard({ product }) {
   )
 }
 
-export default EachCard
+export {EachCard}

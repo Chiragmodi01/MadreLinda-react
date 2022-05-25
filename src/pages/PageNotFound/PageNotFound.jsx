@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/PageNotFound/PageNotFound.css';
-import pageNotFound from "../assets/gifs/page-not-found.gif";
+import './PageNotFound.css';
+import pageNotFound from "../../assets/gifs/page-not-found.gif";
 
 function PageNotFound() {
   return (
@@ -10,4 +10,4 @@ function PageNotFound() {
   )
 }
 
-export default PageNotFound;
+export {PageNotFound};

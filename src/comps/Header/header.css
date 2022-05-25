@@ -1,3 +1,21 @@
+/* collection header */
+.collection-header {
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #e9e9e9;
+    text-transform: uppercase;
+}
+.collection-header_title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+.collection-header_subtitle {
+    font-size: 1.2rem;
+}
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
 

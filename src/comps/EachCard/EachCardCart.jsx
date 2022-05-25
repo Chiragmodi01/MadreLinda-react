@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import '../styles/utils/utils.css'
-import '../styles/card/verticalCard.css'
-import '../styles/card/horizontalCard.css'
-import { FiHeart, AiOutlinePlusSquare, AiOutlineMinusSquare } from '../utils/getIcons';
+import '../../styles/card/verticalCard.css'
+import '../../styles/card/horizontalCard.css'
+import { FiHeart, AiOutlinePlusSquare, AiOutlineMinusSquare } from '../../utils/getIcons';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useProducts } from '../helpers/context/products-context';
+import { useProducts } from '../../helpers/context/products-context';
 
-function EachCard({ product }) {
+function EachCardCart({ product }) {
 
     const { dispatch } = useProducts();
 
-    const [showImgPlaceholder, setShowImgPlaceholder] = useState(true);
+    const [showImgPlaceholder, setShowImgPlaceholder] = useState(true); 
     const [showImgErrorPlaceholder, setShowImgErrorPlaceholder] = useState(false);
 
   return (
@@ -48,4 +47,4 @@ function EachCard({ product }) {
   )
 }
 
-export default EachCard
+export {EachCardCart}

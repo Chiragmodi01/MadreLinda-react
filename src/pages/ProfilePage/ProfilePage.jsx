@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import '../styles/profilepage/signup.css';
-import LoginAside from '../comps/LoginAside';
-import { useProducts } from '../helpers/context/products-context';
+import './signup.css';
+import {LoginAside} from '../../comps';
+import { useProducts } from '../../helpers/context/products-context';
 import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
@@ -11,7 +11,7 @@ function ProfilePage() {
 
   let navigate = useNavigate()
 
-  const { state, dispatch, isLoggedIn } = useProducts();
+  const { state, dispatch } = useProducts();
 
   const [userData, setUserData] = useState({
     "email":"",
@@ -131,4 +131,4 @@ function ProfilePage() {
   )
 }
 
-export default ProfilePage
+export {ProfilePage}

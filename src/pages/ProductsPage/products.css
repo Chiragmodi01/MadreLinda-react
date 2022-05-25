@@ -1,5 +1,5 @@
 /* products */
-.productPage_products, .wishlist_products, .cartPage_products {
+.productPage_products, .wishlist_products {
     min-height: 50vh;
     padding: 2rem 4rem;
     display: grid;
@@ -18,10 +18,6 @@
     left: 45%;
 }
 
-/* product img */
-/* .productPage_card-img {
-
-} */
 
 /* img placeholder */
 .productImg-placeholder {

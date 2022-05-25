@@ -12,19 +12,14 @@
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
+    min-height: 50vh;
+    padding: 2rem 4rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    position: relative;
 }
 
 /* price details column */
-.cartPage_price-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-    text-align: left;
-    border-left: 1px solid #e9e9e9;
-    padding-left: 3rem;
-    grid-column: 3 / span 1;
-}
 .cartPage_price-details {
     display: flex;
     flex-direction: column;

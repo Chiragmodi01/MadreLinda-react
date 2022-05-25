@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import { useProducts } from '../helpers/context/products-context';
+import { useProducts } from '../../helpers/context/products-context';
 
-import EachCard from '../comps/EachCard';
+import {EachCard} from '../../comps';
 
 function WishlistPage() {
 
@@ -36,4 +36,4 @@ function WishlistPage() {
   )
 }
 
-export default WishlistPage
+export {WishlistPage}

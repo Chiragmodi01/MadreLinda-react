@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import '../styles/homepage/header.css'
-import { IoSearchOutline, IoClose, BsBag, FiHeart, BiUser } from 'react-icons/io5';
+import { IoSearchOutline, IoClose, BsBag, FiHeart, BiUser } from '../../utils/getIcons';
 import { Link } from "react-router-dom";
-import { useProducts } from '../helpers/context/products-context';
+import { useProducts } from '../../helpers/context/products-context';
 import { useNavigate } from "react-router-dom";
 
 function HeaderNav() {
 
-  const { state, dispatch } = useProducts();
+  const { state } = useProducts();
     
   const [closePromo, setClosePromo] = useState(false);
   

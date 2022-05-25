@@ -1,9 +1,8 @@
 import React, { useReducer } from 'react'
-import '../styles/productspage/filters.css'
-import '../styles/utils/utils.css'
-import { IoIosArrowDown } from '../utils/getIcons';
-import { ShowFilterReducer } from '../helpers/reducer/ShowFilterReducer';
-import { useProducts} from '../helpers/context/products-context';
+import './filters.css'
+import { IoIosArrowDown } from '../../utils/getIcons';
+import { ShowFilterReducer } from '../../helpers/reducer/ShowFilterReducer';
+import { useProducts} from '../../helpers/context/products-context';
 
 function Filters() {
 
@@ -178,4 +177,4 @@ function Filters() {
   )
 }
 
-export default Filters
+export {Filters}

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import '../styles/utils/utils.css'
-import '../styles/card/verticalCard.css'
+import '../../styles/card/verticalCard.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useProducts } from '../helpers/context/products-context';
+import { useProducts } from '../../helpers/context/products-context';
 
-function EachCard({ index }) {
+function EachCardLanding({ index }) {
     
     const { state } = useProducts();
 
@@ -29,4 +28,4 @@ function EachCard({ index }) {
   )
 }
 
-export default EachCard
+export {EachCardLanding}

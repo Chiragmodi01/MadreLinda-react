@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useProducts } from '../helpers/context/products-context';
-import '../styles/cartPage/cartPage.css';
-import '../styles/header/header.css';
+import { useProducts } from '../../helpers/context/products-context';
+import './cartPage.css';
 
-import EachCardCart from '../comps/EachCardCart';
+import {EachCardCart} from '../../comps';
 
 function CartPage() {
 
@@ -20,10 +19,6 @@ function CartPage() {
     { state.isVoucherApplied ? alert('One voucher already used!') : voucherCode.some((code) => code === voucher) ? dispatch({ type: 'APPLY_VOUCHER', payload: 50}) : alert('Incorrect Voucher code')}
   }
 
-  const disableVoucher = () => {
-    console.log('disable vc triggered!'),
-    {...state, isVoucherDisabled: true};
-  }
 
   return (
     <div>
@@ -60,7 +55,7 @@ function CartPage() {
               <ul className="apply-voucher-bottom-list">
                 {
                   voucherCode.map((voucher) => {
-                    return <li className='apply-voucher-bottom-list-item' onClick={(e) => setVoucher(e.target.innerText)}>{voucher}</li>
+                    return <li key={voucher} className='apply-voucher-bottom-list-item' onClick={(e) => setVoucher(e.target.innerText)}>{voucher}</li>
                   })
                 }
               </ul>
@@ -98,4 +93,4 @@ function CartPage() {
   )
 }
 
-export default CartPage
+export {CartPage}

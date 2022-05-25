@@ -1,4 +1,5 @@
 import React from 'react'
+import './header.css'
 import HeaderTop from './HeaderTop';
 import HeaderNav from './HeaderNav';
 
@@ -11,4 +12,4 @@ function Header() {
   )
 }
 
-export default Header
+export {Header}
