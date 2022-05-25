@@ -26,13 +26,13 @@
     align-items: flex-start;
     gap: 2rem;
     text-align: left;
-    border-left: 1px solid #e9e9e9;
+    border-left: 1px solid var(--secondary);
     padding-left: 3rem;
     grid-column: 3 / span 1;
 }
 .cartPage_apply-voucher-wrapper {
     width: 100%;
-    border-bottom: 1px solid #e9e9e9;
+    border-bottom: 1px solid var(--secondary);
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
@@ -85,7 +85,7 @@
     border-top: 1px solid #e9e9;
 }
 .cartPage_apply-voucher-input {
-    background-color: #e9e9e9;
+    background-color: var(--secondary);
     border: none;
     outline: none;
     padding: .5rem;

@@ -33,8 +33,8 @@ function EachCard({ product }) {
             <div className="card-collection-rating">
               <p className="card-badge">{product.collection}</p>
               <p className="card-badge">
-                {[...Array( product.rating)].map((el, index) => <BsStarFill fill="#d1d1d1" className='star-filled' key={index} size="1em"/>)}
-                {[...Array(5 - product.rating)].map((el, index) => <BsStar fill="#d1d1d1" key={index} size="1em"/>)}
+                {[...Array( product.rating)].map((el, index) => <BsStarFill fill="var(--secondary-dark)" className='star-filled' key={index} size="1em"/>)}
+                {[...Array(5 - product.rating)].map((el, index) => <BsStar fill="var(--secondary-dark)" key={index} size="1em"/>)}
               </p>
             </div>
             <button className="btn-add-to-bag btn-long btn-hover"

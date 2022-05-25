@@ -6,7 +6,7 @@
     align-items: flex-start;
     justify-content: center;
     gap: 1.5rem;
-    background-color: #e9e9e9;
+    background-color: var(--secondary);
     text-transform: uppercase;
 }
 .collection-header_title {
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: space-between;
     padding: .5rem 1.5rem;
-    border-bottom: 1px solid #e9e9e9;
+    border-bottom: 1px solid var(--secondary);
 }
 .header_top_location {
     display: inline-flex;
@@ -45,7 +45,7 @@
     gap: 1rem;
 }
 .icon-map-pin {
-    border-right: 1px solid #e9e9e9;
+    border-right: 1px solid var(--secondary);
     padding-right: 1rem;
 }
 .header_top_actions-wrapper {
@@ -61,7 +61,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e9e9e9;
+    border-bottom: 1px solid var(--secondary);
 }
 .header_main_nav-pills-wrapper {
     display: flex;
@@ -96,7 +96,7 @@
     justify-content: center;
     gap: 1.5rem;
     padding-left: 1.5rem;
-    border-left: 1px solid #e9e9e9;
+    border-left: 1px solid var(--secondary);
 }
 .header_main_nav-search-wrapper {
     display: flex;
@@ -119,11 +119,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #e9e9e9;
+    border-bottom: 1px solid var(--secondary);
     padding: .3rem 1.5rem;
     font-size: .8rem;
     width: auto;
-    background-color: #f9f9f9;
+    background-color: var(--secondary-mild);
 }
 .header_promotional_text {
     flex-grow: 1;
