@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useProducts } from '../helpers/context/products-context';
-import { RiShareBoxFill } from 'react-icons/ri';
 import '../styles/cartPage/cartPage.css';
 import '../styles/header/header.css';
 
@@ -9,7 +8,7 @@ import EachCardCart from '../comps/EachCardCart';
 
 function CartPage() {
 
-  const voucherCode = ["NEOG22", "CHIRAG50", "FULLBONUSMARKS50"];
+  const voucherCode = ["NEOG22", "CHIRAG50", "MLFIRST50"];
   
   const [voucher, setVoucher] = useState('');
 
@@ -50,10 +49,22 @@ function CartPage() {
         </main>
         <div className="cartPage_price-details">
           <div className="cartPage_apply-voucher-wrapper">
-            <input type="text" className="cartPage_apply-voucher-input" placeholder="14 digit voucher code"
-            disabled={(state.cartItems.length === 0 ? disableVoucher() : false) || state.isVoucherDisabled }
-            value={voucher} onChange={(e) => setVoucher(e.target.value)}/>
-            <button className="cartPage_apply-voucher-action btn-hover" onClick={applyVoucher}>{state.isVoucherApplied ? "Applied!" : "Apply"}</button>
+            <div className="cartPage-apply-voucher-top">
+              <input type="text" className="cartPage_apply-voucher-input" placeholder="apply cupon code here"
+              disabled={state.cartItems.length === 0 || state.isVoucherDisabled }
+              value={voucher} onChange={(e) => setVoucher(e.target.value)}/>
+              <button disabled={state.cartItems.length === 0} className="cartPage_apply-voucher-action btn-hover" onClick={applyVoucher}>{state.isVoucherApplied ? "Applied!" : "Apply"}</button>
+            </div>
+            <div className="cartPage-apply-voucher-bottom">
+              <p className="apply-voucher-bottom-title">Available cupons</p>
+              <ul className="apply-voucher-bottom-list">
+                {
+                  voucherCode.map((voucher) => {
+                    return <li className='apply-voucher-bottom-list-item' onClick={(e) => setVoucher(e.target.innerText)}>{voucher}</li>
+                  })
+                }
+              </ul>
+            </div>
           </div>
           <div className="cartPage_price-details-wrapper">
               <h5 className="price_details-title">Price Details ({state.cartItems.length} item)</h5>
@@ -81,9 +92,6 @@ function CartPage() {
               </div>
           </div>
           <button className="price-details-action-place btn-hover">Place your order</button>
-          <button className="price-details-action-place btn-hover">
-            <RiShareBoxFill size="1.3em" />
-          Share your cart</button>
           </div>
       </div>  
     </div>

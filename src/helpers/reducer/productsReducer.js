@@ -104,7 +104,7 @@ const productReducer = (state, action) => {
             return {
                 ...state,
                 voucherPrice: action.payload,
-                totalPrice: state.totalPrice - state.voucherPrice,
+                totalPrice: state.totalPrice - action.payload,
                 isVoucherApplied: true,
                 isVoucherDisabled: true
             }

@@ -40,8 +40,36 @@
     border-bottom: 1px solid #e9e9e9;
     padding-bottom: 1rem;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.cartPage-apply-voucher-top {
+    width: 100%;
+    padding-bottom: .5rem;
+    display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.cartPage-apply-voucher-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .5rem;
+}
+.apply-voucher-bottom-list {
+    color: #757575;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: .4rem;
+    font-size: .95rem;
+}
+.apply-voucher-bottom-list-item {
+    cursor: pointer;
 }
 .price-details_info-wrapper {
     display: flex;
@@ -83,6 +111,11 @@
     padding: .7rem 1.2rem;
     background-color: transparent;
     width: 100%;
+}
+
+.pointer-none {
+    pointer-events: none;
+    fill: red;
 }
 
 /* err-cart */

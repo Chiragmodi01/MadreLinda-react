@@ -35,8 +35,8 @@ function EachCard({ product }) {
             <p className="card-price">${product.price}</p>
             <p className="card-badge">{product.category}</p>
             <p className="card-qty">
-              <AiOutlineMinusSquare size='1.5em' className='card-qty-icon cursor-pointer'
-              onClick={() => {product.qty <= 1  ? dispatch({ type: 'ADD_TO_BAG', payload: {product: product, charges: 20}}) : dispatch({ type: 'DECREASE_QTY', payload: {product: product}})}}/>
+              <AiOutlineMinusSquare size='1.5em' className={` ${product.qty <= 1 && 'pointer-none'} card-qty-icon cursor-pointer`}
+              onClick={() => {product.qty >= 1  && dispatch({ type: 'DECREASE_QTY', payload: {product: product}})}}/>
               {product.qty}
               <AiOutlinePlusSquare size='1.5em' className='card-qty-icon cursor-pointer'
               onClick={() => dispatch({ type: 'INCREASE_QTY', payload: {product: product, charges: 20}})}/>
