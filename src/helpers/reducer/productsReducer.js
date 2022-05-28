@@ -36,7 +36,6 @@ const productReducer = (state, action) => {
                 return {
                     ...state,
                     products: fillHeartAndIsInBag(state.products, action.payload.product), 
-                    // fillHeartAndIsInBag(state.products, false action.payload.product),
                     cartItems: removeCurrent(state.cartItems, action.payload.product),
                     wishlistItems: [ ...state.wishlistItems, {...action.payload.product, fillHeart: true}],
                     initialPrice: state.initialPrice - (action.payload.product.price * action.payload.product.qty),

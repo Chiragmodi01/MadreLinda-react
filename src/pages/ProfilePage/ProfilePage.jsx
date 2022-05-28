@@ -1,24 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './signup.css';
 import {LoginAside} from '../../comps';
+import AddressCard from '../../comps/ProfileCards/AddressCard'
 import { useProducts } from '../../helpers/context/products-context';
-import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
   const getLocalToken = localStorage.getItem("token");
-
-
-  let navigate = useNavigate()
+  const [isAddress, setIsAddress] = useState(false);
 
   const { state, dispatch } = useProducts();
 
   const [userData, setUserData] = useState({
     "email":"",
-    "password":"",
-    "name": "chris",
-    "lastname": "white"
+    "password":""
   })
+
+  const initialAddressState = {
+    "title": "",
+    "firstname": "",
+    "lastname": "",
+    "number": "",
+    "country":"",
+    "company":"",
+    "address": "",
+    "state": "",
+    "zip": "",
+    "city": ""
+  }
+
+  const [addressData, setAddressData] = useState({
+    "title": "",
+    "firstname": "",
+    "lastname": "",
+    "number": "",
+    "country":"",
+    "company":"",
+    "address": "",
+    "state": "",
+    "zip": "",
+    "city": ""
+  })
+
+  const demoAddress = {
+    'title': "Mr",
+    "firstname": "Matt",
+    "lastname": "Davidson",
+    "number": "+1-725-254-8767",
+    "country":"United States",
+    "company":"Blue Beluga",
+    'address': "152, Rath Bridge, Negro Ohana Lane",
+    "state": "Pennsylvania",
+    "zip": "38204",
+    "city": "Geneva"
+  }
   
 
   const signupSubmitHandler = async() => {
@@ -26,22 +61,44 @@ function ProfilePage() {
       try {
         const res = await axios.post("/api/auth/signup", userData);
         localStorage.setItem("token", res.data.encodedToken);
-        dispatch({type: "USER_LOGIN", payload: true})
       } catch(e) {
         console.log(e.message);
       }
     }
-    navigate("/products")
-
+    dispatch({type: 'SHOW_LOGIN', payload: true});
+    alert('Please login now');
   }
 
   const logOutUser = () => {
     localStorage.clear();
-    dispatch({type: "USER_LOGIN", payload: false})
+    dispatch({type: "USER_LOGIN", payload: false});
+    setAddressData(initialAddressState)
+    setIsAddress(false)
+    localStorage.removeItem("address");
   }
 
-  console.log(state.isLoggedIn);
+  const addressSubmitHandler = () => {
+    if(state.isLoggedIn) {
+      setIsAddress(true);
+      localStorage.setItem("address", JSON.stringify(addressData));
+    } else {
+      alert("Login first!");
+      dispatch({type: 'SHOW_LOGIN', payload: true});
+      setAddressData(initialAddressState)
+    }
+  }
 
+
+  useEffect(() => {
+    localStorage.getItem("token") &&  dispatch({type: "USER_LOGIN", payload: true});
+    if("address" in localStorage) {
+      const localAddress = localStorage.getItem("address", addressData);
+      setIsAddress(true);
+      setAddressData(JSON.parse(localAddress))
+    }
+  }, [])
+
+  console.log(isAddress)
 
   return (
     <>
@@ -58,17 +115,17 @@ function ProfilePage() {
           </div>
         </div>
 
-        <section className="signupPage_left">
+        <form className="signupPage_left" onSubmit={signupSubmitHandler}>
           <div className="signupPage_left_login-info">
             <div className="signupPage_left_login-info_title-wrapper">
-              <p className="signupPage_left_login-info_title-text">Login information</p>
+              <p className="signupPage_left_login-info_title-text">Signup information</p>
               <p className="signupPage_left_login-info_title-required">* Required information</p>
             </div>
             <div className="login-info_input-wrapper">
-              <input placeholder="Email" type="email" name="/" className="signupPage_left_login-info_input email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})} />
+              <input required placeholder="Email" type="email" name="/" className="signupPage_left_login-info_input email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})} />
             </div>
             <div className="login-info_input-wrapper">
-              <input placeholder="Password" type="password" name="/" className="signupPage_left_login-info_input pass" 
+              <input minlength="8" required placeholder="Password" type="password" name="/" className="signupPage_left_login-info_input pass" 
               value={userData.password}
               onChange={(e) => setUserData({...userData, password: e.target.value})}/>
             </div>
@@ -77,53 +134,53 @@ function ProfilePage() {
               <p className="login-info_valid-pass_right">Password Strength - - -</p>
             </div>
           </div>
-
-          <div className="signupPage_left_personal-info">
-            <div className="signupPage_left_personal-info_title-wrapper">
-              <p className="signupPage_left_login-info_title-text">Personal information</p>
-            </div>
-            <div className="personal-info_input-wrapper first-name">
-              <input placeholder="Title" type="text" name="/" className="signupPage_personal-info_input title" id="title" />
-              <input placeholder="First Name" type="text" name="/" className="signupPage_personal-info_input first-name" id="first-name" />
-            </div>
-            <div className="personal-info_input-wrapper last-name">
-              <input placeholder="Last Name" type="text" name="/" className="signupPage_personal-info_input last-name" />
-            </div>
-            <div className="personal-info_input-wrapper contact-no">
-              <input placeholder="Telephone number" type="text" name="/" className="signupPage_personal-info_input contact-no" />
-            </div>
-            <div className="personal-info_input-wrapper dob">
-              <input placeholder="MM" type="text" name="/" className="signupPage_personal-info_input month" id="month" />
-              <input placeholder="DD" type="text" name="/" className="signupPage_personal-info_input date" id="date" />
-              <input placeholder="YYY" type="text" name="/" className="signupPage_personal-info_input year" id="year" />
-            </div>
+          <div className="signupPage_right_billing-info_terms-wrapper">
+              <input required type="checkbox" name="/" className="billing-info_terms-checkbox" />
+              <p className="billing-info_terms-desc">
+                I agree to receive information by email about offers, services, products and events from Madre Linda or other group companies, in accordance with the Privacy PolicyNew tab.
+                <br/>
+                <br/>
+                By creating an account, you agree to accept the General Terms and Conditions of UseNew tab and that your data will be processed in compliance with the Privacy PolicyNew tab of Madrè Linda.
+              </p>
           </div>
-        </section>
+            <button type="submit" className="signupPage_action-create-ac btn-hover-rv cursor-pointer">Create an account</button>
+        </form>
 
-        <section className="signupPage_right billing-info">
+            {
+            isAddress ?
+            <AddressCard initialAddressState={initialAddressState} setAddress={setAddressData} address={addressData} setIsAddress={setIsAddress}/> :
+            <form className="signupPage_right billing-info" onSubmit={addressSubmitHandler}>
             <div className="billing-info_input-wrapper">
               <div className="signupPage_right_billing-info_title-wrapper">
                 <p className="signupPage_right_billing-info_title-text">Billing information</p>
               </div>
-              <input placeholder="Please select your country" type="text" name="/" className="signupPage_right_billing-info_input email" />
-              <input placeholder="Comapny" type="text" name="/" className="signupPage_right_billing-info_input email" />
-              <input placeholder="Address" type="text" name="/" className="signupPage_right_billing-info_input email" />
-              <input placeholder="Address continued" type="text" name="/" className="signupPage_right_billing-info_input email" />
-              <input placeholder="State" type="text" name="/" className="signupPage_right_billing-info_input email" />
-              <input placeholder="City" type="text" name="/" className="signupPage_right_billing-info_input email" />
-              <input placeholder="Zip code" type="text" name="/" className="signupPage_right_billing-info_input pass" />
+            <div className="personal-info_input-wrapper first-name">
+              <input required value={addressData.title} onChange={(e) => setAddressData({...addressData, title: e.target.value})}  placeholder="Title" type="text" name="/" className="signupPage_personal-info_input title" id="title" />
+              <input required value={addressData.firstname} onChange={(e) => setAddressData({...addressData, firstname: e.target.value})}  placeholder="First Name" type="text" name="/" className="signupPage_personal-info_input first-name" id="first-name" />
+            </div>
+            <div className="personal-info_input-wrapper last-name">
+              <input required value={addressData.lastname} onChange={(e) => setAddressData({...addressData, lastname: e.target.value})}  placeholder="Last Name" type="text" name="/" className="signupPage_personal-info_input last-name" />
+            </div>
+            <div className="personal-info_input-wrapper contact-no">
+              <input required value={addressData.number} onChange={(e) => setAddressData({...addressData, number: e.target.value})}  placeholder="Telephone number" type="text" name="/" className="signupPage_personal-info_input contact-no" />
+            </div>
+              <input required onChange={(e) => setAddressData({...addressData, country: e.target.value})} value={addressData.country} placeholder="Please select your country" type="text" name="/" className="signupPage_right_billing-info_input email" />
+              <input required onChange={(e) => setAddressData({...addressData, company: e.target.value})} value={addressData.company} placeholder="Comapny (optional)" type="text" name="/" className="signupPage_right_billing-info_input email" />
+              <input required onChange={(e) => setAddressData({...addressData, address: e.target.value})} value={addressData.address} placeholder="Address" type="text" name="/" className="signupPage_right_billing-info_input email" />
+              <input required onChange={(e) => setAddressData({...addressData, state: e.target.value})} value={addressData.state} placeholder="State" type="text" name="/" className="signupPage_right_billing-info_input email" />
+              <input required onChange={(e) => setAddressData({...addressData, city: e.target.value})} value={addressData.city} placeholder="City" type="text" name="/" className="signupPage_right_billing-info_input email" />
+              <input required onChange={(e) => setAddressData({...addressData, zip: e.target.value})} value={addressData.zip} placeholder="Zip code" type="number" name="/" className="signupPage_right_billing-info_input pass" />
             </div>
             <div className="signupPage_right_billing-info_terms-wrapper">
-              <input type="checkbox" name="/" className="billing-info_terms-checkbox" />
+              <input type="checkbox" name="/" className="billing-info_terms-checkbox"
+              onChange={(e) => e.target.checked ? setAddressData(demoAddress) : setAddressData(initialAddressState)}
+              />
               <p className="billing-info_terms-desc">
-                I agree to receive information by email about offers, services, products and events from Hermes or other group companies, in accordance with the Privacy PolicyNew tab.
-                <br/>
-                <br/>
-                By creating an account, you agree to accept the General Terms and Conditions of UseNew tab and that your data will be processed in compliance with the Privacy PolicyNew tab of Hermès.
+                Fill demo address and personal information
               </p>
             </div>
-            <button type="submit" className="signupPage_action-create-ac btn-hover-rv cursor-pointer" onClick={signupSubmitHandler}>Create an account</button>
-        </section>
+            <button type="submit" className="signupPage_action-create-ac btn-hover-rv cursor-pointer">Add Address</button>
+        </form>}
         
       </main>
     </div>

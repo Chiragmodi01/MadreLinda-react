@@ -3,10 +3,13 @@ import axios from 'axios'
 import { useProducts } from '../../helpers/context/products-context';
 import './login.css';
 import { IoClose } from '../../utils/getIcons';
+import { useNavigate } from 'react-router-dom';
 
 function LoginAside( ) {
 
     const { state, dispatch } = useProducts();
+
+    let navigate = useNavigate();
 
     const [userDataLogin, setUserDataLogin] = useState({
         "email": "",
@@ -19,15 +22,30 @@ function LoginAside( ) {
         try {
             const res = await axios.post("/api/auth/login", userDataLogin);
             localStorage.setItem("token", res.data.encodedToken);
-            dispatch({type: "USER_LOGIN", payload: true})
+            dispatch({type: "USER_LOGIN", payload: true});
+            dispatch({type: 'SHOW_LOGIN', payload: false});
+            alert("User Logged In")
+            navigate('/products');
           } catch(e) {
             console.log(e.message);
           }
       }
 
-      const fillGuestUser = () => {
-        setUserDataLogin({ email: "brownboychris@gmail.com",
-        password: "chrisbrown"})
+      const fillGuestUser = async(e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("/api/auth/login", {
+                "email": "brownboychris@gmail.com",
+                "password": "chrisbrown"
+              });
+            localStorage.setItem("token", res.data.encodedToken);
+            dispatch({type: "USER_LOGIN", payload: true})
+            dispatch({type: 'SHOW_LOGIN', payload: false});
+            navigate('/products');
+            alert("User Logged In")
+          } catch(e) {
+            console.log(e.message);
+          }
       }
     
   return (

@@ -65,6 +65,7 @@
     gap: 1.3rem;
 }
 .personal-info_input-wrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.3rem;
@@ -125,7 +126,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 3rem;
     text-align: left;
     padding: 0 2rem;

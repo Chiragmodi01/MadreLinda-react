@@ -78,7 +78,7 @@ function HomePage() {
             <div className="homePage_trendingHim_section section-1">
                 <div className="homePage_trendingHim_video-header">
                     <p className="homePage_trendingHim_video-header_heading">Men's summer 2022 collection</p>
-                    <p className="homePage_trendingHim_video-header_sub-heading">Summer 2022 brings a breath of optimism and lightness Bold and casual, Hermès men defy gravity and define their own perspectives.</p>
+                    <p className="homePage_trendingHim_video-header_sub-heading">Summer 2022 brings a breath of optimism and lightness Bold and casual, Madrè Linda men defy gravity and define their own perspectives.</p>
                     <p className="homePage_trendingHim_video-header_action cursor-pointer">Discover the collection</p>
                 </div>
                 <div className="trendingHim_section-1_video-container">
