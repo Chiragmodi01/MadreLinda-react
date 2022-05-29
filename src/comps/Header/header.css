@@ -169,3 +169,19 @@
 .closed-promo {
     display: none;
 }
+
+@media screen and (max-width: 550px) { 
+    .header_main-container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        text-align: left;
+        align-items: start;
+    }
+    .header_main_nav-pill {
+        padding: 0;
+        padding-right: 8px;
+    }
+    .homePage_new-categories-container {
+        display: none !important;
+    }
+}
