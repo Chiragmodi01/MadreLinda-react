@@ -1,7 +1,7 @@
-import React from 'react'
-import './header.css'
-import HeaderTop from './HeaderTop';
-import HeaderNav from './HeaderNav';
+import React from "react";
+import "./header.css";
+import HeaderTop from "./HeaderTop";
+import HeaderNav from "./HeaderNav";
 
 function Header() {
   return (
@@ -9,7 +9,7 @@ function Header() {
       <HeaderTop />
       <HeaderNav />
     </>
-  )
+  );
 }
 
-export {Header}
+export { Header };
