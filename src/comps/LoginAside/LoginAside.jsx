@@ -4,6 +4,7 @@ import { useProducts } from '../../helpers/context/products-context';
 import './login.css';
 import { IoClose } from '../../utils/getIcons';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function LoginAside( ) {
 
@@ -25,11 +26,11 @@ function LoginAside( ) {
             localStorage.setItem("token", res.data.encodedToken);
             dispatch({type: "USER_LOGIN", payload: true});
             dispatch({type: 'SHOW_LOGIN', payload: false});
-            alert("User Logged In")
+            toast.success("User Logged In")
             navigate('/products');
           } catch(e) {
             console.log(e.message);
-            alert("Error! check your details and try again!")
+            toast.error("Error! check your details and try again!")
           }
       }
 
@@ -46,7 +47,7 @@ function LoginAside( ) {
             dispatch({type: "USER_LOGIN", payload: true})
             dispatch({type: 'SHOW_LOGIN', payload: false});
             navigate('/products');
-            alert("User Logged In")
+            toast.success("User Logged In")
           } catch(e) {
             console.log(e.message);
           }

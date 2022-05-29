@@ -98,20 +98,6 @@
     padding-left: 1.5rem;
     border-left: 1px solid var(--secondary);
 }
-.header_main_nav-search-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.header_main_nav-search-box {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    padding: .4rem;
-    width: 5rem;
-    font-size: 1rem;
-    color: black;
-}
 
 /* header promotional */
 .header_promotional-container {

@@ -4,6 +4,7 @@ import './signup.css';
 import {LoginAside} from '../../comps';
 import AddressCard from '../../comps/ProfileCards/AddressCard'
 import { useProducts } from '../../helpers/context/products-context';
+import { toast } from 'react-toastify';
 
 function ProfilePage() {
   const getLocalToken = localStorage.getItem("token");
@@ -69,23 +70,25 @@ function ProfilePage() {
       }
     }
     dispatch({type: 'SHOW_LOGIN', payload: true});
-    alert('Please login now');
+    toast.error('Please login now');
   }
 
   const logOutUser = () => {
     localStorage.clear();
     dispatch({type: "USER_LOGIN", payload: false});
     setAddressData(initialAddressState)
+    setUserDataLogin({"email":"","password":""})
     setIsAddress(false)
     localStorage.removeItem("address");
   }
 
-  const addressSubmitHandler = () => {
+  const addressSubmitHandler = (e) => {
+    e.preventDefault()
     if(state.isLoggedIn) {
       setIsAddress(true);
       localStorage.setItem("address", JSON.stringify(addressData));
     } else {
-      alert("Login first!");
+      toast.error("Login first!");
       dispatch({type: 'SHOW_LOGIN', payload: true});
       setAddressData(initialAddressState)
     }
@@ -155,7 +158,7 @@ function ProfilePage() {
             {
             isAddress ?
             <AddressCard initialAddressState={initialAddressState} setAddress={setAddressData} address={addressData} setIsAddress={setIsAddress}/> :
-            <form className="signupPage_right billing-info" onSubmit={addressSubmitHandler}>
+            <form className="signupPage_right billing-info" onSubmit={(e) => addressSubmitHandler(e)}>
             <div className="billing-info_input-wrapper">
               <div className="signupPage_right_billing-info_title-wrapper">
                 <p className="signupPage_right_billing-info_title-text">Billing information</p>

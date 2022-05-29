@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IoSearchOutline, IoClose, BsBag, FiHeart, BiUser } from '../../utils/getIcons';
+import { IoClose, BsBag, FiHeart, BiUser } from '../../utils/getIcons';
 import { Link } from "react-router-dom";
 import { useProducts } from '../../helpers/context/products-context';
 import { useNavigate } from "react-router-dom";
@@ -31,10 +31,6 @@ function HeaderNav() {
             </div>
 
             <div className="header_main_nav-actions-wrapper">
-                <div className="header_main_nav-search-wrapper" title='Search'>
-                    <IoSearchOutline size="1.6em" className="icon-magnifying-glass" />
-                    <input type="text" placeholder='Search' className='header_main_nav-search-box'/>
-                </div>
                 <div className="header_main_nav-action-icons-wrapper">
                     <Link to="/profile">
                         <span className="header_main_nav_actions-wrapper">
