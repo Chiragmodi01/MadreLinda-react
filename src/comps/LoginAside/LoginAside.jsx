@@ -21,6 +21,7 @@ function LoginAside( ) {
           e.preventDefault();
         try {
             const res = await axios.post("/api/auth/login", userDataLogin);
+            localStorage.setItem("userData", JSON.stringify(userDataLogin));
             localStorage.setItem("token", res.data.encodedToken);
             dispatch({type: "USER_LOGIN", payload: true});
             dispatch({type: 'SHOW_LOGIN', payload: false});
@@ -28,17 +29,20 @@ function LoginAside( ) {
             navigate('/products');
           } catch(e) {
             console.log(e.message);
+            alert("Error! check your details and try again!")
           }
       }
 
       const fillGuestUser = async(e) => {
+        const tempUserData = {
+          "email": "brownboychris@gmail.com",
+          "password": "chrisbrown"
+        }
         e.preventDefault();
         try {
-            const res = await axios.post("/api/auth/login", {
-                "email": "brownboychris@gmail.com",
-                "password": "chrisbrown"
-              });
+            const res = await axios.post("/api/auth/login", tempUserData);
             localStorage.setItem("token", res.data.encodedToken);
+            localStorage.setItem("userData", JSON.stringify(tempUserData));
             dispatch({type: "USER_LOGIN", payload: true})
             dispatch({type: 'SHOW_LOGIN', payload: false});
             navigate('/products');
@@ -60,16 +64,16 @@ function LoginAside( ) {
                     </div>
                     <p className="loginPage_header_desc">If you are a registered user, please enter your email and password.</p>
                 </div>
-                <form action="/" className="loginPage_form">
-                    <input placeholder="Email" type="email" name="/" className="loginPage_form_input input-email" 
+                <form action="/" className="loginPage_form" onSubmit={(e) => loginSubmitHandler(e)}>
+                    <input required placeholder="Email" type="email" name="/" className="loginPage_form_input input-email" 
                     value={userDataLogin.email} onChange={(e) => setUserDataLogin({...userDataLogin, email: e.target.value})}/>
-                    <input placeholder="Password" type="password" name="/" className="loginPage_form_input input-pass" 
+                    <input required minlength="8" placeholder="Password" type="password" name="/" className="loginPage_form_input input-pass" 
                     value={userDataLogin.password} onChange={(e) => setUserDataLogin({...userDataLogin, password: e.target.value})}/>
                     <div className="loginPage_form_checkbox-wrapper">
-                        <input type="checkbox" name="/" id="remember-me" className="loginPage_form_checkbox" />
+                        <input required type="checkbox" name="/" id="remember-me" className="loginPage_form_checkbox" />
                         <label for="remember-me" className="loginPage_form_checkbox-label">Remember me</label>
                     </div>
-                    <button type="submit" className="loginPage_from_submit cursor-pointer" onClick={(e) => loginSubmitHandler(e)}>Login</button>
+                    <button type="submit" className="loginPage_from_submit cursor-pointer" >Login</button>
                     <button className="loginPage_from_action-forgot-pass" onClick={(e) => fillGuestUser(e)}>Guest Login</button>
                 </form>
             </div>

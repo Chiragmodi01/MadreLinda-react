@@ -8,6 +8,7 @@ import { useProducts } from '../../helpers/context/products-context';
 function ProfilePage() {
   const getLocalToken = localStorage.getItem("token");
   const [isAddress, setIsAddress] = useState(false);
+  const [isUserData, setIsUserData] = useState(false);
 
   const { state, dispatch } = useProducts();
 
@@ -56,11 +57,13 @@ function ProfilePage() {
   }
   
 
-  const signupSubmitHandler = async() => {
+  const signupSubmitHandler = async(e) => {
+    e.preventDefault()
     if(!getLocalToken) {
       try {
         const res = await axios.post("/api/auth/signup", userData);
         localStorage.setItem("token", res.data.encodedToken);
+        setIsUserData(true);
       } catch(e) {
         console.log(e.message);
       }
@@ -96,13 +99,16 @@ function ProfilePage() {
       setIsAddress(true);
       setAddressData(JSON.parse(localAddress))
     }
+    if("userData" in localStorage) {
+      const localUserData = localStorage.getItem("userData");
+      setIsUserData(true);
+      setUserData(JSON.parse(localUserData))
+    }
   }, [])
-
-  console.log(isAddress)
 
   return (
     <>
-    <LoginAside/>
+    <LoginAside />
     <div className='SignupPage' >
       <main className="signupPage-container">
 
@@ -115,7 +121,7 @@ function ProfilePage() {
           </div>
         </div>
 
-        <form className="signupPage_left" onSubmit={signupSubmitHandler}>
+        <form className="signupPage_left" onSubmit={(e) => signupSubmitHandler(e)}>
           <div className="signupPage_left_login-info">
             <div className="signupPage_left_login-info_title-wrapper">
               <p className="signupPage_left_login-info_title-text">Signup information</p>
