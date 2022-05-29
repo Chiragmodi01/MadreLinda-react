@@ -36,7 +36,6 @@ const productReducer = (state, action) => {
                 return {
                     ...state,
                     products: fillHeartAndIsInBag(state.products, action.payload.product), 
-                    // fillHeartAndIsInBag(state.products, false action.payload.product),
                     cartItems: removeCurrent(state.cartItems, action.payload.product),
                     wishlistItems: [ ...state.wishlistItems, {...action.payload.product, fillHeart: true}],
                     initialPrice: state.initialPrice - (action.payload.product.price * action.payload.product.qty),
@@ -104,7 +103,7 @@ const productReducer = (state, action) => {
             return {
                 ...state,
                 voucherPrice: action.payload,
-                totalPrice: state.totalPrice - state.voucherPrice,
+                totalPrice: state.totalPrice - action.payload,
                 isVoucherApplied: true,
                 isVoucherDisabled: true
             }

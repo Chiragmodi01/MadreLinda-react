@@ -1,3 +1,6 @@
+@import url('./styles/utils/colors.css');
+@import url('./styles/utils/utils.css');
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@100;200;300;400;500;600&display=swap');
 
 .App {

@@ -1,0 +1,35 @@
+.AddressCard {
+    background-color: var(--secondary);
+    border-radius: 4px;
+    padding: 2rem;
+    box-sizing: border-box;
+    height: auto;
+    padding-top: 0;
+    width: 100%;
+}
+.AddressCard-main {
+    border: 1px solid black;
+    padding: .8rem;
+}
+.AddressCard-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.AddressCard-list-item {
+    margin-bottom: .8rem;
+}
+.AddressCard-list-item.add {
+    line-height: 1.2rem;
+}
+.AddressCard-list-item.name {
+    font-size: 1.2rem;
+}
+.AddressCard-list-item-title {
+    margin: 0 5px;
+}
+.add-icons .icon-add {
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
