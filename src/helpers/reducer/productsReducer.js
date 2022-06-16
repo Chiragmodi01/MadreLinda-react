@@ -5,6 +5,8 @@ const productReducer = (state, action) => {
             return { ...state, products: action.payload }
         case 'LOADER':
             return { ...state, loader: false }
+        case 'HOME_LOADER':
+            return { ...state, homeLoader: false }
         case 'ADD_TO_WISHLIST':
 
             if (checkExistingInWishlist(state, action.payload.product)) {

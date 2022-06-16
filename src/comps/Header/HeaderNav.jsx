@@ -3,6 +3,7 @@ import { IoClose, BsBag, FiHeart, BiUser } from "../../utils/getIcons";
 import { Link } from "react-router-dom";
 import { useProducts } from "../../helpers/context/products-context";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function HeaderNav() {
   const { state } = useProducts();
@@ -12,6 +13,10 @@ function HeaderNav() {
   const handleClosePromo = () => setClosePromo(true);
 
   let navigate = useNavigate();
+
+  const toastLogin = () => {
+    !state.isLoggedIn && toast.warning("Please Login First!")
+  }
 
   return (
     <div className="header-sticky">
@@ -42,7 +47,7 @@ function HeaderNav() {
                 />
               </span>
             </Link>
-            <Link to="/wishlist">
+            <Link to={state.isLoggedIn ? '/wishlist' : '/profile'} onClick={toastLogin}>
               <span className="header_main_nav_actions-wrapper">
                 <FiHeart
                   size="1.4em"
@@ -51,7 +56,7 @@ function HeaderNav() {
                 />
               </span>
             </Link>
-            <Link to="/cart">
+            <Link to={state.isLoggedIn ? '/cart' : '/profile'} onClick={toastLogin}>
               <span className="header_main_nav_actions-wrapper">
                 <BsBag
                   size="1.4em"

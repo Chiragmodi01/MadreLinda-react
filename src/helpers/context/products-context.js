@@ -17,7 +17,7 @@ function ProductsProvider({ children }) {
             console.error(e);
         }
     }
-    
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -35,7 +35,8 @@ function ProductsProvider({ children }) {
         isVoucherDisabled: false,
         voucherPrice: 0,
         showLogin: false,
-        isLoggedIn: false
+        isLoggedIn: false,
+        homeLoader: true
     })    
 
     const [toggleFilterState, toggleFilterDispatch] = useReducer(toggleFilterReducer, {
@@ -46,6 +47,12 @@ function ProductsProvider({ children }) {
         price: {Price: false, Range: 2400},
         sortby: {Relevance: true, LowToHigh: false, HighToLow: false}
     })
+
+    useEffect(() => {
+        setTimeout(() => {
+          dispatch({type:"HOME_LOADER"});
+        }, 2500)
+      }, [])
 
     return (
         <ProductsContext.Provider value={{state, dispatch, toggleFilterState, toggleFilterDispatch}}>

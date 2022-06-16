@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward, IoIosArrowBack } from "../../utils/getIcons";
 import { EachCardLanding } from "../../comps";
 import { useProducts } from "../../helpers/context/products-context";
+import InfinityLoader from "../../assets/gifs/Infinity-loader.svg";
 import {
   img1big,
   img2big,
@@ -22,10 +23,16 @@ import {
 
 function HomePage() {
   let navigate = useNavigate();
-  const { state } = useProducts();
+  const { state} = useProducts();
 
   return (
     <main>
+      {state.homeLoader ? 
+        <div className="home-loading-wrapper">
+          <img src={InfinityLoader} alt="infinity-loader" />
+        </div> 
+        : 
+        <>
       <div className="homePage_hero-container">
         <section className="homePage_hero_section section-1">
           <img src={img4big} alt="img" className="homePage_hero_section_img" />
@@ -254,6 +261,8 @@ function HomePage() {
           </p>
         </div>
       </div>
+      </>
+      }
     </main>
   );
 }
